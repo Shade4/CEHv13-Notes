@@ -210,7 +210,7 @@ That closes out Module 1. Across this eight-part series, the module covered:
 - **Information security controls** — defense-in-depth, risk management, cyber threat intelligence, threat modeling, incident management, and AI/ML ([Part G](07-information-security-controls.md))
 - **Information security acts and laws** from around the world (this file)
 
-The next module examines how both attackers and ethical hackers/pen testers perform **footprinting** — collecting information about a target before an attack or an audit — covered in the companion [`CEH-Module-02-Footprinting-and-Reconnaissance`](../CEH-Module-02-Footprinting-and-Reconnaissance/README.md) repo folder.
+The next module examines how both attackers and ethical hackers/pen testers perform **footprinting** — collecting information about a target before an attack or an audit — covered in the companion [`CEH-Module-02-Footprinting-and-Reconnaissance`](../Module-02-Footprinting-and-Reconnaissance/README.md) repo folder.
 
 ---
 
