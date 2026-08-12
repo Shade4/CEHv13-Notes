@@ -14,11 +14,11 @@ By the end of this module, the goal is to be able to:
 - [x] Explain Hacking Concepts and Different Hacker Classes
 - [x] Explain Ethical Hacking Concepts and Scope
 - [x] Explain AI-Driven Ethical Hacking
-- [x] Explain Hacking Methodologies and Frameworks *(partial — see [Part E](05-hacking-methodologies-and-frameworks.md#a-note-on-scope))*
-- [ ] Summarize the Techniques Used in Information Security Controls
-- [ ] Explain the Importance of Applicable Security Laws and Standards
+- [x] Explain Hacking Methodologies and Frameworks
+- [x] Summarize the Techniques Used in Information Security Controls
+- [x] Explain the Importance of Applicable Security Laws and Standards
 
-The last two objectives (Information Security Controls, and Security Laws & Standards) aren't yet covered in this repo — add them as Parts F and G once that material is available.
+**Module 1 is now complete.** ✅
 
 ---
 
@@ -31,6 +31,9 @@ The last two objectives (Information Security Controls, and Security Laws & Stan
 | C | [`03-ethical-hacking-concepts-and-scope.md`](03-ethical-hacking-concepts-and-scope.md) | What ethical hacking is, why it's necessary, the 3 key questions ethical hackers ask, scope/limitations, the security-audit framework, and the technical/non-technical skills required |
 | D | [`04-ai-driven-ethical-hacking.md`](04-ai-driven-ethical-hacking.md) | AI's role in modern ethical hacking — benefits, applications, the "AI will replace hackers" myth, and a survey of ChatGPT-powered hacking-assistant tools |
 | E | [`05-hacking-methodologies-and-frameworks.md`](05-hacking-methodologies-and-frameworks.md) | The 5-phase CEH Ethical Hacking Framework and the 7-phase Cyber Kill Chain Methodology, each with Mermaid diagrams |
+| F | [`06-mitre-attck-and-diamond-model.md`](06-mitre-attck-and-diamond-model.md) | TTP-based threat actor profiling, adversary behavioral identification, Indicators of Compromise (IoCs), the MITRE ATT&CK Framework, and the Diamond Model of Intrusion Analysis |
+| G | [`07-information-security-controls.md`](07-information-security-controls.md) | Information Assurance, adaptive security strategy, defense-in-depth, risk management, Cyber Threat Intelligence, threat modeling, incident management/IH&R, and AI/ML in cybersecurity |
+| H | [`08-information-security-laws-and-standards.md`](08-information-security-laws-and-standards.md) | PCI DSS, ISO/IEC standards, HIPAA, SOX, DMCA, FISMA, GDPR, the UK's DPA 2018, and a cyber-law reference table across 15 countries |
 
 ---
 
@@ -41,10 +44,19 @@ flowchart TD
     A[A: Information Security Concepts] --> B[B: Hacking Concepts & Hacker Classes]
     B --> C[C: Ethical Hacking Concepts & Scope]
     C --> D[D: AI-Driven Ethical Hacking]
-    D --> E[E: Hacking Methodologies & Frameworks]
+    D --> E[E: CEH Framework & Cyber Kill Chain]
+    E --> F[F: MITRE ATT&CK & Diamond Model]
+    F --> G[G: Information Security Controls]
+    G --> H[H: Security Laws & Standards]
 ```
 
 Each file is self-contained with its own table of contents and a quick-reference summary at the bottom, so you can also jump straight to whichever topic you need.
+
+---
+
+## What's Next
+
+Module 1 is complete. Module 2 — **Footprinting and Reconnaissance** — continues in the sibling repo folder [`../CEH-Module-02-Footprinting-and-Reconnaissance/`](../Module-02-Footprinting-and-Reconnaissance/README.md), covering how attackers and ethical hackers alike gather intelligence on a target before an engagement begins.
 
 ---
 
