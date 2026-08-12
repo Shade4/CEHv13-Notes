@@ -1,7 +1,7 @@
 # Module 1: Introduction to Ethical Hacking
 ## Part E — Hacking Methodologies and Frameworks
 
-[← Back to Part D: AI-Driven Ethical Hacking](04-ai-driven-ethical-hacking.md) | [Back to README](README.md)
+[← Back to Part D: AI-Driven Ethical Hacking](04-ai-driven-ethical-hacking.md) | [Next: MITRE ATT&CK and the Diamond Model →](06-mitre-attck-and-diamond-model.md)
 
 ---
 
@@ -166,8 +166,8 @@ Organizations that understand TTPs at this level of granularity are far better p
 
 ## A Note on Scope
 
-This section of the source material also names the **MITRE ATT&CK Framework** and the **Diamond Model of Intrusion Analysis** as topics covered under "Hacking Methodologies and Frameworks," but the source video for this write-up ends partway through the TTPs discussion (at page 53) before reaching either of those frameworks in detail. Rather than invent content for topics the video didn't actually cover, this file sticks strictly to what was shown — the CEH Ethical Hacking Framework and the Cyber Kill Chain Methodology. Happy to add a Part F covering MITRE ATT&CK and the Diamond Model whenever that portion of the material is available.
+This file originally covered only the CEH Ethical Hacking Framework and the Cyber Kill Chain Methodology, since the source video available at the time ended mid-page (page 53) before reaching the MITRE ATT&CK Framework or the Diamond Model of Intrusion Analysis. That gap is now closed — both frameworks are covered in [Part F](06-mitre-attck-and-diamond-model.md), continuing directly from the TTPs discussion above.
 
 ---
 
-*Part of the CEH Module 1 study series. [Return to the README](README.md) for the full repo index.*
+*Part of the CEH Module 1 study series — continues in [Part F: MITRE ATT&CK and the Diamond Model](06-mitre-attck-and-diamond-model.md).*
