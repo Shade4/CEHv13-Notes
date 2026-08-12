@@ -56,7 +56,7 @@ Each file is self-contained with its own table of contents and a quick-reference
 
 ## What's Next
 
-Module 1 is complete. Module 2 — **Footprinting and Reconnaissance** — continues in the sibling repo folder [`../CEH-Module-02-Footprinting-and-Reconnaissance/`](../Module-02-Footprinting-and-Reconnaissance/README.md), covering how attackers and ethical hackers alike gather intelligence on a target before an engagement begins.
+Module 1 is complete. Module 2 — **Footprinting and Reconnaissance** — continues in the sibling repo folder [`../Module-02-Footprinting-and-Reconnaissance/`](../Module-02-Footprinting-and-Reconnaissance/README.md), covering how attackers and ethical hackers alike gather intelligence on a target before an engagement begins.
 
 ---
 
