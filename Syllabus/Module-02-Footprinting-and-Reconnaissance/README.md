@@ -57,7 +57,7 @@ Each file is self-contained with its own table of contents and a quick-reference
 
 ## Relationship to Module 1
 
-This folder picks up directly where [`../CEH-Module-01-Introduction-to-Ethical-Hacking/`](../CEH-Module-01-Introduction-to-Ethical-Hacking/README.md) leaves off. Module 1 covers the foundational concepts (information security, hacking/ethical hacking concepts, methodologies, controls, and laws); Module 2 moves into the first real phase of the [CEH Ethical Hacking Framework](../CEH-Module-01-Introduction-to-Ethical-Hacking/05-hacking-methodologies-and-frameworks.md#phase-1-reconnaissance) — reconnaissance — and covers it in full technical depth, from search-engine dorking all the way through countermeasures.
+This folder picks up directly where [`../CEH-Module-01-Introduction-to-Ethical-Hacking/`](../Module-01-Introduction-to-Ethical-Hacking/README.md) leaves off. Module 1 covers the foundational concepts (information security, hacking/ethical hacking concepts, methodologies, controls, and laws); Module 2 moves into the first real phase of the [CEH Ethical Hacking Framework](../CEH-Module-01-Introduction-to-Ethical-Hacking/05-hacking-methodologies-and-frameworks.md#phase-1-reconnaissance) — reconnaissance — and covers it in full technical depth, from search-engine dorking all the way through countermeasures.
 
 ## What's Next
 
