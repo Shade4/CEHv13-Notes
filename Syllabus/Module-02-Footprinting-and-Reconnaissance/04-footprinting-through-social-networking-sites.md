@@ -1,7 +1,7 @@
 # Module 2: Footprinting and Reconnaissance
 ## Part D — Footprinting Through Social Networking Sites
 
-[← Back to Part C: Footprinting Through Internet Research Services](03-footprinting-through-internet-research-services.md) | [Back to README](README.md)
+[← Back to Part C: Footprinting Through Internet Research Services](03-footprinting-through-internet-research-services.md) | [Next: Whois, IP Geolocation, and DNS Footprinting →](05-whois-and-dns-footprinting.md)
 
 ---
 
@@ -73,8 +73,8 @@ Beyond individual profiles, a range of online services exist specifically to ana
 
 ## A Note on Scope
 
-The source video for this write-up ends right at page 212 — precisely where the full [Footprinting Methodology](01-footprinting-concepts.md#the-footprinting-methodology) diagram indicates **Whois Footprinting** begins next (page 212 onward per the module's table of contents), followed by DNS Footprinting, Network and Email Footprinting, and Footprinting through Social Engineering. None of those are covered yet in this repo folder. Send the next clip whenever it's available and this can be extended with a Part E onward.
+This file originally ended here, at page 212, since the source material available at the time stopped right where **Whois Footprinting** begins next. That gap is now closed — Whois, DNS, Network, Email, and Social Engineering footprinting are all covered in [Parts E through G](05-whois-and-dns-footprinting.md), continuing directly from this page.
 
 ---
 
-*Part of the CEH Module 2 study series. [Return to the README](README.md) for the full index.*
+*Part of the CEH Module 2 study series — continues in [Part E: Whois, IP Geolocation, and DNS Footprinting](05-whois-and-dns-footprinting.md).*
