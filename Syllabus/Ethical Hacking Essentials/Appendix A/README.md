@@ -70,8 +70,8 @@ Each file is self-contained with its own table of contents and a quick-reference
 
 Appendix A sits alongside the main module sequence as background material:
 
-- [`../CEH-Module-01-Introduction-to-Ethical-Hacking/`](../Module-01-Introduction-to-Ethical-Hacking/README.md) — foundational security concepts, hacking/ethical hacking concepts, methodologies, controls, laws
-- [`../CEH-Module-02-Footprinting-and-Reconnaissance/`](../Module-02-Footprinting-and-Reconnaissance/README.md) — the first attack-methodology phase: reconnaissance
+- [`../Module-01-Introduction-to-Ethical-Hacking/`](../CEH-Module-01-Introduction-to-Ethical-Hacking/README.md) — foundational security concepts, hacking/ethical hacking concepts, methodologies, controls, laws
+- [`../Module-02-Footprinting-and-Reconnaissance/`](../CEH-Module-02-Footprinting-and-Reconnaissance/README.md) — the first attack-methodology phase: reconnaissance
 - **This appendix** — the IT/CS fundamentals (OS, file systems, networking, virtualization, web/database tech) that the modules above assume familiarity with
 
 ---
