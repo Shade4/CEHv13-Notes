@@ -39,20 +39,20 @@ Where [Appendix A](../CEH-Appendix-A-Essential-Concepts-I/README.md) covered tec
 | # | File | Covers |
 |---|---|---|
 | 1 | [`01-information-security-controls.md`](01-information-security-controls.md) | Admin/physical/technical controls, security policies, HR/legal implications, security awareness training, physical security, access control (DAC/MAC/RBAC), IAM, authentication/authorization/accounting |
-| 2 | [`02-network-segmentation.md`](02-network-segmentation.md) | Network segmentation, security zoning, DMZ, network virtualization, virtual networks, VLANs |
+| 2 | [`02-network-segmentation.md`](02-network-segmentation-concepts.md) | Network segmentation, security zoning, DMZ, network virtualization, virtual networks, VLANs |
 | 3 | [`03-network-security-solutions.md`](03-network-security-solutions.md) | SIEM (+ architecture), UBA, UTM, load balancers, NAC, VPN (architecture, components, concentrators), secure router configuration |
-| 4 | [`04-data-leakage.md`](04-data-leakage.md) | Data leakage risks, insider/external threats, Data Loss Prevention (DLP) |
-| 5 | [`05-data-backup.md`](05-data-backup.md) | RAID technology (levels 0/1/3/5/10/50), backup methods (hot/cold/warm), backup locations, data recovery |
-| 6 | [`06-risk-management.md`](06-risk-management.md) | ERM, NIST RMF, COSO ERM, COBIT frameworks; risk mitigation; risk calculation formulas (SLE/ALE); qualitative vs. quantitative risk |
-| 7 | [`07-business-continuity-and-disaster-recovery.md`](07-business-continuity-and-disaster-recovery.md) | BC vs. DR, BIA, RTO, RPO, BCP, DRP |
+| 4 | [`04-data-leakage.md`](04-data-leakage-concepts.md) | Data leakage risks, insider/external threats, Data Loss Prevention (DLP) |
+| 5 | [`05-data-backup.md`](05-data-backup-process.md) | RAID technology (levels 0/1/3/5/10/50), backup methods (hot/cold/warm), backup locations, data recovery |
+| 6 | [`06-risk-management.md`](06-risk-management-concepts-and-frameworks.md) | ERM, NIST RMF, COSO ERM, COBIT frameworks; risk mitigation; risk calculation formulas (SLE/ALE); qualitative vs. quantitative risk |
+| 7 | [`07-business-continuity-and-disaster-recovery.md`](07-business-continuity-and-disaster-recovery-process.md) | BC vs. DR, BIA, RTO, RPO, BCP, DRP |
 | 8 | [`08-cyber-threat-intelligence.md`](08-cyber-threat-intelligence.md) | CIF, 15 intelligence source types (OSINT/HUMINT/SIGINT/etc.), data reliability, IoCs, knowledge repositories, threat intel reports and dissemination |
 | 9 | [`09-threat-modeling-methodology.md`](09-threat-modeling-methodology.md) | STRIDE, PASTA, TRIKE, VAST, DREAD, OCTAVE, threat profiling/attribution |
-| 10 | [`10-penetration-testing.md`](10-penetration-testing.md) | Pentest vs. audit vs. VA, blue/red teaming, black/grey/white-box testing, 3-phase pentest structure, security testing methodologies, pentest risks, ROE |
-| 11 | [`11-security-operations.md`](11-security-operations.md) | SOC definition, architecture, operations (log collection through reporting), SOC workflow |
-| 12 | [`12-computer-forensics.md`](12-computer-forensics.md) | Computer forensics objectives, pre-investigation/investigation/post-investigation phases |
+| 10 | [`10-penetration-testing.md`](10-different-types-of-penetration-testing-and-its-phases.md) | Pentest vs. audit vs. VA, blue/red teaming, black/grey/white-box testing, 3-phase pentest structure, security testing methodologies, pentest risks, ROE |
+| 11 | [`11-security-operations.md`](11-security-operations-concepts.md) | SOC definition, architecture, operations (log collection through reporting), SOC workflow |
+| 12 | [`12-computer-forensics.md`](12-different-phases-of-computer-forensic-investigation.md) | Computer forensics objectives, pre-investigation/investigation/post-investigation phases |
 | 13 | [`13-software-development-security.md`](13-software-development-security.md) | Secure SDLC, functional vs. security activities, security requirements gathering, secure design principles, 3-tier secure architecture |
-| 14 | [`14-security-governance.md`](14-security-governance.md) | Corporate governance, information security governance (program mgmt/security engineering/security operations), governance roles and responsibilities |
-| 15 | [`15-asset-management.md`](15-asset-management.md) | Asset ownership, classification, inventory, value, protection strategy and governance |
+| 14 | [`14-security-governance.md`](14-security-governance-principles.md) | Corporate governance, information security governance (program mgmt/security engineering/security operations), governance roles and responsibilities |
+| 15 | [`15-asset-management.md`](15-asset-management-process.md) | Asset ownership, classification, inventory, value, protection strategy and governance |
 
 ---
 
