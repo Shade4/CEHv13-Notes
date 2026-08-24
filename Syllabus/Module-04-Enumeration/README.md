@@ -40,10 +40,10 @@ Scanning tells you a port is open. Enumeration is what you do *with* that open p
 |---|------|--------|
 | 01 | [`01-enumeration-concepts.md`](01-enumeration-concepts.md) | What enumeration is, what it extracts, extraction techniques, full services/ports-to-enumerate reference |
 | 02 | [`02-netbios-enumeration.md`](02-netbios-enumeration.md) | NetBIOS name table, `nbtstat`, NetBIOS Enumerator, Nmap NSE, PsTools suite (PsExec–PsShutdown), `net view`, AI-assisted enumeration |
-| 03 | [`03-snmp-and-ldap-enumeration.md`](03-snmp-and-ldap-enumeration.md) | SNMP architecture/MIB/OIDs, SnmpWalk, Nmap SNMP scripts, snmp-check & other tools, AI; LDAP/DSA sessions, manual Python enumeration, `ldapsearch`, `ldap-brute`, tools |
+| 03 | [`03-snmp-and-ldap-enumeration.md`](03-snmp-enumeration-and-ldap-enumeration.md) | SNMP architecture/MIB/OIDs, SnmpWalk, Nmap SNMP scripts, snmp-check & other tools, AI; LDAP/DSA sessions, manual Python enumeration, `ldapsearch`, `ldap-brute`, tools |
 | 04 | [`04-ntp-and-nfs-enumeration.md`](04-ntp-and-nfs-enumeration.md) | `ntpdate`/`ntptrace`/`ntpdc`/`ntpq` full reference, NTP tools; `rpcinfo`/`showmount`, RPCScan, SuperEnum |
 | 05 | [`05-smtp-and-dns-enumeration.md`](05-smtp-and-dns-enumeration.md) | SMTP VRFY/EXPN/RCPT TO, Nmap/Metasploit/smtp-user-enum, AI; DNS zone transfer (`dig`/`nslookup`/DNSRecon), DNS cache snooping, DNSSEC zone walking, OWASP Amass, Nmap DNS/DNSSEC scripts |
-| 06 | [`06-other-enumeration-techniques.md`](06-other-enumeration-techniques.md) | IPsec (ISAKMP/ike-scan), VoIP (Svmap/Metasploit SIP), RPC (`rpcinfo`/Nmap/NetScanTools), Unix/Linux user enumeration (`rusers`/`rwho`/`finger`), SMB enumeration, AI-generated automation scripts |
+| 06 | [`06-other-enumeration-techniques.md`](06-ipsec-voip-rpc-unix-and-linux-and-smb-enumeration.md) | IPsec (ISAKMP/ike-scan), VoIP (Svmap/Metasploit SIP), RPC (`rpcinfo`/Nmap/NetScanTools), Unix/Linux user enumeration (`rusers`/`rwho`/`finger`), SMB enumeration, AI-generated automation scripts |
 | 07 | [`07-enumeration-countermeasures.md`](07-enumeration-countermeasures.md) | Defensive controls for every service above: SNMP, LDAP, NFS, SMTP, SMB, DNS |
 | — | [`cheatsheet.md`](cheatsheet.md) | One-page quick reference: every enumeration command grouped by service |
 
