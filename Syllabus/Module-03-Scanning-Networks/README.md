@@ -31,8 +31,8 @@ Scanning is **not** the intrusion itself — it's an aggressive, active extensio
 | 02 | [`02-scanning-tools.md`](02-scanning-tools.md) | Nmap, Hping3 (full command reference), Metasploit, NetScanTools Pro, AI-assisted scanning |
 | 03 | [`03-host-discovery.md`](03-host-discovery.md) | ARP/ICMP/TCP/UDP/IP-protocol ping scans, ping sweeps, ping sweep tools |
 | 04 | [`04-port-and-service-discovery.md`](04-port-and-service-discovery.md) | Full port-scanning taxonomy (TCP Connect, Stealth, Inverse-flag, ACK-probe, IDLE, UDP, SCTP, SSDP, IPv6), service/version detection, Nmap performance tuning |
-| 05 | [`05-os-discovery-banner-grabbing.md`](05-os-discovery-banner-grabbing.md) | Active vs. passive banner grabbing, Nmap OS fingerprint tests, TTL/window-size signatures, OS discovery tooling |
-| 06 | [`06-scanning-beyond-ids-firewall.md`](06-scanning-beyond-ids-firewall.md) | Packet fragmentation, source routing, source port manipulation, decoys, IP/MAC spoofing, custom packets, proxies & anonymizers |
+| 05 | [`05-os-discovery-banner-grabbing.md`](05-os-discovery-(banner-grabbing-os-fingerprinting).md) | Active vs. passive banner grabbing, Nmap OS fingerprint tests, TTL/window-size signatures, OS discovery tooling |
+| 06 | [`06-scanning-beyond-ids-firewall.md`](06-scanning-beyond-ids-and-firewall.md) | Packet fragmentation, source routing, source port manipulation, decoys, IP/MAC spoofing, custom packets, proxies & anonymizers |
 | 07 | [`07-network-scanning-countermeasures.md`](07-network-scanning-countermeasures.md) | Defensive controls: ping-sweep/port-scan/banner-grab countermeasures, IP-spoofing detection & defense, detection tooling |
 | — | [`cheatsheet.md`](cheatsheet.md) | One-page quick reference: every scan type + its exact Nmap/Hping3 syntax |
 
