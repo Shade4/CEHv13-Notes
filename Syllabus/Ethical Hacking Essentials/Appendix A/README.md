@@ -38,7 +38,7 @@ Unlike Modules 1 and 2, Appendix A isn't about attack techniques — it's a **fo
 | 3 | [`03-network-fundamentals-part1.md`](03-computer-network-fundamentals-(Part-1%3A%20models-types-topologies-and-hardware).md) | OSI & TCP/IP models, 6 network types, wireless standards/technologies, 6 topologies, hardware components, LAN technology, cabling |
 | 4 | [`04-network-fundamentals-part2.md`](04-computer-network-fundamentals-(part%202%3A%20protocols-TCP-IP-internals-and-addressing).md) | Application-layer protocols (DHCP/DNS/HTTP family/FTP family/SMTP family/PGP/Telnet/SSH/SOAP/SNMP/NTP/RPC/SMB/SIP/RADIUS/TACACS+/RIP), TCP/UDP internals, IP/ICMP/ARP, IP addressing & subnetting, ports, routing/NAT/VLAN |
 | 5 | [`05-network-troubleshooting.md`](05-basic-network-troubleshooting-techniques.md) | Diagnostic ICMP messages, the 6-step troubleshooting framework, upper-layer fault table, 10 troubleshooting tools |
-| 6 | [`06-virtualization.md`](06-virtualization.md) | Virtualization characteristics/benefits, major vendors, security concerns, virtual firewalls/OS/databases |
+| 6 | [`06-virtualization.md`](06-virtualization-concepts.md) | Virtualization characteristics/benefits, major vendors, security concerns, virtual firewalls/OS/databases |
 | 7 | [`07-nfs.md`](07-nfs.md) | NFS security (host/file level), root squashing, nosuid, noexec |
 | 8 | [`08-web-markup-and-programming-languages.md`](08-web-markup-and-programming-languages.md) | HTML, XML, Java, .NET, C#, JSP, ASP, PHP, Perl, JavaScript, Bash, PowerShell, C/C++, CGI |
 | 9 | [`09-application-development-frameworks.md`](09-application-development-frameworks.md) | .NET/J2EE/ColdFusion/Ruby on Rails/AJAX and their named vulnerability classes |
