@@ -21,4 +21,4 @@
 
 ## Overview
 
-Applicatoin-level session hijacking relies on HTTP sessions rather than the underlying TCP connection. The attacker steals or predicts a valid session token to gain unauthorized access to a web server, or to create a 
+Applicatoin-level session hijacking relies on HTTP sessions rather than the underlying TCP connection. The attacker steals or predicts a valid session token to gain unauthorized access to a web server, or to create a brand-new unauthorized session using stolen data. In practice, network-level and application-level hijacking often happen together - a successful network-level hijack (see ['03-network-level-session-hijacking.md'](03-netword-level-session-hijacking.md)) frequently hands the attacker exactly the traffic they need to pull off an application-level attack.
