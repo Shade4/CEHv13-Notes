@@ -125,7 +125,7 @@ Every diagram from the source slides has been:
 
 | Figure | Title | Location |
 |---|---|---|
-| Fig 12.1 | Placement of IDS | [01 — IDS](./01-intrusion-detection-system/README.md#where-ids-resides-in-the-network) |
+| Fig 12.1 | Placement of IDS | [01 — IDS](01-intrusion-detection-system.md#where-ids-resides-in-the-network) |
 | Fig 12.2 | Working of IDS | [01 — IDS](./01-intrusion-detection-system/README.md#how-an-ids-works) |
 | Fig 12.3 | IPS placement example | [02 — IPS](./02-intrusion-prevention-system/README.md#where-ips-sits-in-the-network) |
 | Fig 12.4 | Network-based IDS (NIDS) | [01 — IDS](./01-intrusion-detection-system/README.md#network-based-intrusion-detection-systems-nids) |
