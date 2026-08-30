@@ -126,22 +126,22 @@ Every diagram from the source slides has been:
 | Figure | Title | Location |
 |---|---|---|
 | Fig 12.1 | Placement of IDS | [01 — IDS](01-intrusion-detection-system.md#where-ids-resides-in-the-network) |
-| Fig 12.2 | Working of IDS | [01 — IDS](./01-intrusion-detection-system/README.md#how-an-ids-works) |
-| Fig 12.3 | IPS placement example | [02 — IPS](./02-intrusion-prevention-system/README.md#where-ips-sits-in-the-network) |
-| Fig 12.4 | Network-based IDS (NIDS) | [01 — IDS](./01-intrusion-detection-system/README.md#network-based-intrusion-detection-systems-nids) |
-| Fig 12.5 | Host-based IDS (HIDS) | [01 — IDS](./01-intrusion-detection-system/README.md#host-based-intrusion-detection-systems-hids) |
-| Fig 12.6 | Example of a Firewall | [03 — Firewalls](./03-firewalls/README.md#what-is-a-firewall) |
-| Fig 12.7 | Bastion Host Firewall | [03 — Firewalls](./03-firewalls/README.md#1-bastion-host) |
-| Fig 12.8 | Screened Subnet Firewall | [03 — Firewalls](./03-firewalls/README.md#2-screened-subnet-dmz) |
-| Fig 12.9 | Multi-homed Firewall | [03 — Firewalls](./03-firewalls/README.md#3-multi-homed-firewall) |
-| Fig 12.10 | Demilitarized Zone (DMZ) | [03 — Firewalls](./03-firewalls/README.md#demilitarized-zone-dmz) |
-| Fig 12.11 | Network-based Firewall | [03 — Firewalls](./03-firewalls/README.md#network-based-firewalls) |
-| Fig 12.12 | Host-based Firewall | [03 — Firewalls](./03-firewalls/README.md#host-based-firewalls) |
-| Table 12.1 | Firewall Technologies (OSI) | [03 — Firewalls](./03-firewalls/README.md#osi-layer--firewall-technology-mapping) |
-| Fig 12.13 | Packet Filtering Firewall | [03 — Firewalls](./03-firewalls/README.md#1-packet-filtering-firewall) |
-| Fig 12.14 | Circuit-Level Gateway | [03 — Firewalls](./03-firewalls/README.md#2-circuit-level-gateway-firewall) |
-| Fig 12.22+ | Evasion tool examples | [06 — Evasion](./06-evasion-and-bypass-techniques/) |
-| Fig 12.78+ | Honeypot diagrams | [05 — Honeypots](./05-honeypots/README.md) |
+| Fig 12.2 | Working of IDS | [01 — IDS](01-intrusion-detection-system.md#how-an-ids-works) |
+| Fig 12.3 | IPS placement example | [02 — IPS](02-intrusion-prevention-system.md#where-ips-sits-in-the-network) |
+| Fig 12.4 | Network-based IDS (NIDS) | [01 — IDS](01-intrusion-detection-system.md#network-based-intrusion-detection-systems-nids) |
+| Fig 12.5 | Host-based IDS (HIDS) | [01 — IDS](01-intrusion-detection-system.md#host-based-intrusion-detection-systems-hids) |
+| Fig 12.6 | Example of a Firewall | [03 — Firewalls](03-firewalls.md#what-is-a-firewall) |
+| Fig 12.7 | Bastion Host Firewall | [03 — Firewalls](03-firewalls.md#1-bastion-host) |
+| Fig 12.8 | Screened Subnet Firewall | [03 — Firewalls](03-firewalls.md#2-screened-subnet-dmz) |
+| Fig 12.9 | Multi-homed Firewall | [03 — Firewalls](03-firewalls.md#3-multi-homed-firewall) |
+| Fig 12.10 | Demilitarized Zone (DMZ) | [03 — Firewalls](03-firewalls.md#demilitarized-zone-dmz) |
+| Fig 12.11 | Network-based Firewall | [03 — Firewalls](03-firewalls.md#network-based-firewalls) |
+| Fig 12.12 | Host-based Firewall | [03 — Firewalls](03-firewalls.md#host-based-firewalls) |
+| Table 12.1 | Firewall Technologies (OSI) | [03 — Firewalls](03-firewalls.md#osi-layer--firewall-technology-mapping) |
+| Fig 12.13 | Packet Filtering Firewall | [03 — Firewalls](03-firewalls.md#1-packet-filtering-firewall) |
+| Fig 12.14 | Circuit-Level Gateway | [03 — Firewalls](03-firewalls.md#2-circuit-level-gateway-firewall) |
+| Fig 12.22+ | Evasion tool examples | [06 — Evasion](06-evasion-and-bypass-techniques.md) |
+| Fig 12.78+ | Honeypot diagrams | [05 — Honeypots](05-honeypots.md) |
 
 ---
 
