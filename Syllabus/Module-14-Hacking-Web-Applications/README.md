@@ -27,11 +27,11 @@ Running any of this against systems you do not own or lack explicit written auth
 | 07 | [web-services-api-and-webhook-attacks.md](./07-web-services-api-%26-webhook-attacks.md) | SOAP attacks, XXE, OWASP API Top 10, API hacking methodology, webhook security |
 | 08 | [other-web-app-attacks.md](./08-other-web-application-attacks.md) | Directory traversal, deserialization, business logic bypass, Magecart, DoS, DNS rebinding, and 12 more |
 | 09 | [web-app-hacking-tools.md](./09-web-application-hacking-tools.md) | Install + usage reference for Burp, ZAP, sqlmap, Nikto, WPScan, Gobuster, Hydra, and more |
-| 10 | [countermeasures-and-secure-coding.md](./10-countermeasures-and-secure-coding.md) | SAST/DAST, secure coding per vulnerability class, WAF/RASP, security headers, full defense playbook |
+| 10 | [countermeasures-and-secure-coding.md](./10-countermeasures-%26-secure-coding.md) | SAST/DAST, secure coding per vulnerability class, WAF/RASP, security headers, full defense playbook |
 
 **Cheatsheets** (fast lookup during an actual engagement):
-- [cheatsheets/payloads-cheatsheet.md](./cheatsheets/payloads-cheatsheet.md) — copy-paste test payloads for every injection/XSS/SSRF/traversal class
-- [cheatsheets/commands-and-tools-cheatsheet.md](./cheatsheets/commands-and-tools-cheatsheet.md) — every tool command in this repo, grouped by phase
+- [cheatsheets/payloads-cheatsheet.md](./cheatsheets/test-payloads-quick-reference.md) — copy-paste test payloads for every injection/XSS/SSRF/traversal class
+- [cheatsheets/commands-and-tools-cheatsheet.md](./cheatsheets/commands-%26-tools-quick-reference.md) — every tool command in this repo, grouped by phase
 
 ## 🗺️ How to Use This Repo
 
