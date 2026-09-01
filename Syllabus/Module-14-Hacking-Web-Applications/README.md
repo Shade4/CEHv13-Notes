@@ -20,7 +20,7 @@ Running any of this against systems you do not own or lack explicit written auth
 |---|---|---|
 | 01 | [web-application-concepts.md](./01-web-application-concepts.md) | Web app architecture, request lifecycle, N-tier design, SOAP vs REST, the vulnerability stack |
 | 02 | [owasp-top-10-and-web-threats.md](./02-owasp-top-10-(2021)-%26-the-web-application-threat-catalog.md) | OWASP Top 10 (2021) walkthrough + the complete 35-attack CEH threat catalog with cross-links |
-| 03 | [footprinting-and-recon.md](./03-footprinting-and-recon.md) | Server/service discovery, banner grabbing, WAF/load-balancer detection, tech fingerprinting, mirroring |
+| 03 | [footprinting-and-recon.md](./03-footprinting-%26-reconnaissance-(web-application-hacking-methodology-phase-1–2).md) | Server/service discovery, banner grabbing, WAF/load-balancer detection, tech fingerprinting, mirroring |
 | 04 | [injection-attacks.md](./04-injection-attacks.md) | SQL injection (deep dive + sqlmap), command injection, LDAP/XPath injection, SSTI, SSI, CRLF, LFI/RFI |
 | 05 | [xss-csrf-and-client-side-attacks.md](./05-xss-csrf-and-client-side-attacks.md) | XSS (all types + filter evasion), CSRF, clickjacking, JS hijacking, cross-site WebSocket hijacking |
 | 06 | [session-authentication-and-authorization-attacks.md](./06-session-authentication-and-authorization-attacks.md) | Auth bypass, MFA/SAML bypass, session attacks, cookie attacks, authorization/access-control attacks |
