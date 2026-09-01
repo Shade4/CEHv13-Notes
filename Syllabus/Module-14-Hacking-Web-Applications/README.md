@@ -25,7 +25,7 @@ Running any of this against systems you do not own or lack explicit written auth
 | 05 | [xss-csrf-and-client-side-attacks.md](./05-cross-site-scripting-csrf-%26-client-side-attacks.md) | XSS (all types + filter evasion), CSRF, clickjacking, JS hijacking, cross-site WebSocket hijacking |
 | 06 | [session-authentication-and-authorization-attacks.md](./06-session-authentication-%26-authorization-attacks.md) | Auth bypass, MFA/SAML bypass, session attacks, cookie attacks, authorization/access-control attacks |
 | 07 | [web-services-api-and-webhook-attacks.md](./07-web-services-api-%26-webhook-attacks.md) | SOAP attacks, XXE, OWASP API Top 10, API hacking methodology, webhook security |
-| 08 | [other-web-app-attacks.md](./08-other-web-app-attacks.md) | Directory traversal, deserialization, business logic bypass, Magecart, DoS, DNS rebinding, and 12 more |
+| 08 | [other-web-app-attacks.md](./08-other-web-application-attacks.md) | Directory traversal, deserialization, business logic bypass, Magecart, DoS, DNS rebinding, and 12 more |
 | 09 | [web-app-hacking-tools.md](./09-web-app-hacking-tools.md) | Install + usage reference for Burp, ZAP, sqlmap, Nikto, WPScan, Gobuster, Hydra, and more |
 | 10 | [countermeasures-and-secure-coding.md](./10-countermeasures-and-secure-coding.md) | SAST/DAST, secure coding per vulnerability class, WAF/RASP, security headers, full defense playbook |
 
