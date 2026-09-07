@@ -41,9 +41,9 @@ Click a module name to jump straight to its folder.
 | [Ethical Hacking Essentials](./Syllabus/Ethical%20Hacking%20Essentials/) | Appendices A–C — supplementary reference material for the core modules |
 | [Module 01 - Introduction to Ethical Hacking](./Syllabus/Module-01-Introduction-to-Ethical-Hacking) | Core information security concepts, hacker types, attack phases, laws, and standards |
 | [Module 02 - Footprinting and Reconnaissance](./Syllabus/Module-02-Footprinting-and-Reconnaissance) | Techniques and tools for gathering intel on a target before an attack |
-| [Module 03 - Scanning Networks](./Syllabus/Module%2003%20-%20Scanning%20Networks/) | Network scanning methods to identify live hosts, open ports, and services |
-| [Module 04 - Enumeration](./Syllabus/Module%2004%20-%20Enumeration/) | Extracting usernames, shares, and running services from a target system |
-| [Module 05 - Vulnerability Analysis](./Syllabus/Module%2005%20-%20Vulnerability%20Analysis/) | Identifying security weaknesses using vulnerability assessment tools |
+| [Module 03 - Scanning Networks](./Syllabus/Module-03-Scanning-Networks) | Network scanning methods to identify live hosts, open ports, and services |
+| [Module 04 - Enumeration](./Syllabus/Module-04-Enumeration) | Extracting usernames, shares, and running services from a target system |
+| [Module 05 - Vulnerability Analysis](./Syllabus/Module-05-Vulnerability-Analysis) | Identifying security weaknesses using vulnerability assessment tools |
 | [Module 06 - System Hacking](./Syllabus/Module%2006%20-%20System%20Hacking/) | Gaining access, escalating privileges, and covering tracks on a system |
 | [Module 07 - Malware Threats](./Syllabus/Module%2007%20-%20Malware%20Threats/) | Trojans, viruses, worms, ransomware, and malware analysis |
 | [Module 08 - Sniffing](./Syllabus/Module%2008%20-%20Sniffing/) | Packet-sniffing techniques used to capture and analyze network traffic |
