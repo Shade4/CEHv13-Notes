@@ -40,7 +40,7 @@ Click a module name to jump straight to its folder.
 |---|---|
 | [Ethical Hacking Essentials](./Syllabus/Ethical%20Hacking%20Essentials/) | Appendices A–C — supplementary reference material for the core modules |
 | [Module 01 - Introduction to Ethical Hacking](./Syllabus/Module%2001%20-%20Introduction%20to%20Ethical%20Hacking/) | Core information security concepts, hacker types, attack phases, laws, and standards |
-| [Module 02 - Footprinting and Reconnaissance](./Syllabus/Module%2002%20-%20Footprinting%20and%20Reconnaissance/) | Techniques and tools for gathering intel on a target before an attack |
+| [Module 02 - Footprinting and Reconnaissance](./Syllabus/Module-01-Introduction-to-Ethical-Hacking) | Techniques and tools for gathering intel on a target before an attack |
 | [Module 03 - Scanning Networks](./Syllabus/Module%2003%20-%20Scanning%20Networks/) | Network scanning methods to identify live hosts, open ports, and services |
 | [Module 04 - Enumeration](./Syllabus/Module%2004%20-%20Enumeration/) | Extracting usernames, shares, and running services from a target system |
 | [Module 05 - Vulnerability Analysis](./Syllabus/Module%2005%20-%20Vulnerability%20Analysis/) | Identifying security weaknesses using vulnerability assessment tools |
