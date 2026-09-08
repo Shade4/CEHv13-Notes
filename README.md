@@ -38,7 +38,7 @@ Click a module name to jump straight to its folder.
 
 | Module | What It Covers |
 |---|---|
-| [Ethical Hacking Essentials](./Syllabus/Ethical%20Hacking%20Essentials/) | Appendices A–C — supplementary reference material for the core modules |
+| [Ethical Hacking Essentials](./Syllabus/Ethical-Hacking-Essentials/) | Appendices A–C — supplementary reference material for the core modules |
 | [Module 01 - Introduction to Ethical Hacking](./Syllabus/Module-01-Introduction-to-Ethical-Hacking) | Core information security concepts, hacker types, attack phases, laws, and standards |
 | [Module 02 - Footprinting and Reconnaissance](./Syllabus/Module-02-Footprinting-and-Reconnaissance) | Techniques and tools for gathering intel on a target before an attack |
 | [Module 03 - Scanning Networks](./Syllabus/Module-03-Scanning-Networks) | Network scanning methods to identify live hosts, open ports, and services |
@@ -51,10 +51,10 @@ Click a module name to jump straight to its folder.
 | [Module 10 - Denial-of-Service](./Syllabus/Module-10-Denial-of-Service) | DoS/DDoS attack techniques, tools, and mitigation strategies |
 | [Module 11 - Session Hijacking](./Syllabus/Module-11-Session-Hijacking) | Taking over active sessions by exploiting session-management flaws |
 | [Module 12 - Evading IDS, Firewalls, and Honeypots](./Syllabus/Module-12-Evading-IDS-Firewall-and-Honeypots) | Techniques to bypass network defenses and spot honeypots |
-| [Module 13 - Hacking Web Servers](./Syllabus/Module%2013%20-%20Hacking%20Web%20Servers) | Web server attack methodology and infrastructure vulnerabilities |
-| [Module 14 - Hacking Web Applications](./Syllabus/Module%2014%20-%20Hacking%20Web%20Applications) | Common web app vulnerabilities and exploitation methods |
-| [Module 15 - SQL Injection](./Syllabus/Module%2015%20-%20SQL%20Injection) | SQL injection attack types, detection, and prevention |
-| [Module 16 - Hacking Wireless Networks](./Syllabus/Module%2016%20-%20Hacking%20Wireless%20Networks) | Wireless encryption standards, attacks, and Wi-Fi security tools |
+| [Module 13 - Hacking Web Servers](./Syllabus/Module-13-Hacking-Web-Servers) | Web server attack methodology and infrastructure vulnerabilities |
+| [Module 14 - Hacking Web Applications](./Syllabus/Module-14-Hacking-Web-Applications) | Common web app vulnerabilities and exploitation methods |
+| [Module 15 - SQL Injection](./Syllabus/Module-15-SQL-Injection) | SQL injection attack types, detection, and prevention |
+| [Module 16 - Hacking Wireless Networks](./Syllabus/Module-16-Hacking-Wireless-Networks) | Wireless encryption standards, attacks, and Wi-Fi security tools |
 | [Module 17 - Hacking Mobile Platforms](./Syllabus/Module%2017%20-%20Hacking%20Mobile%20Platforms) | Android/iOS attack vectors and mobile device security |
 | [Module 18 - IoT and OT Hacking](./Syllabus/Module%2018%20-%20IoT%20and%20OT%20Hacking) | IoT/OT architecture, attack surfaces, and hacking methodology |
 | [Module 19 - Cloud Computing](./Syllabus/Module%2019%20-%20Cloud%20Computing) | Cloud service models, container security, and cloud-specific threats |
