@@ -50,7 +50,7 @@ Click a module name to jump straight to its folder.
 | [Module 09 - Social Engineering](./Syllabus/Module-09-Social-Engineering) | Human-based manipulation tactics and how to defend against them |
 | [Module 10 - Denial-of-Service](./Syllabus/Module-10-Denial-of-Service) | DoS/DDoS attack techniques, tools, and mitigation strategies |
 | [Module 11 - Session Hijacking](./Syllabus/Module-11-Session-Hijacking) | Taking over active sessions by exploiting session-management flaws |
-| [Module 12 - Evading IDS, Firewalls, and Honeypots](./Syllabus/Module-12-Evading-IDS-Firewalls-and-Honeypots) | Techniques to bypass network defenses and spot honeypots |
+| [Module 12 - Evading IDS, Firewalls, and Honeypots](./Syllabus/Module-12-Evading-IDS-Firewall-and-Honeypots) | Techniques to bypass network defenses and spot honeypots |
 | [Module 13 - Hacking Web Servers](./Syllabus/Module%2013%20-%20Hacking%20Web%20Servers) | Web server attack methodology and infrastructure vulnerabilities |
 | [Module 14 - Hacking Web Applications](./Syllabus/Module%2014%20-%20Hacking%20Web%20Applications) | Common web app vulnerabilities and exploitation methods |
 | [Module 15 - SQL Injection](./Syllabus/Module%2015%20-%20SQL%20Injection) | SQL injection attack types, detection, and prevention |
