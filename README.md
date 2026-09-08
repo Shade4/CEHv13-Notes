@@ -55,10 +55,10 @@ Click a module name to jump straight to its folder.
 | [Module 14 - Hacking Web Applications](./Syllabus/Module-14-Hacking-Web-Applications) | Common web app vulnerabilities and exploitation methods |
 | [Module 15 - SQL Injection](./Syllabus/Module-15-SQL-Injection) | SQL injection attack types, detection, and prevention |
 | [Module 16 - Hacking Wireless Networks](./Syllabus/Module-16-Hacking-Wireless-Networks) | Wireless encryption standards, attacks, and Wi-Fi security tools |
-| [Module 17 - Hacking Mobile Platforms](./Syllabus/Module%2017%20-%20Hacking%20Mobile%20Platforms) | Android/iOS attack vectors and mobile device security |
-| [Module 18 - IoT and OT Hacking](./Syllabus/Module%2018%20-%20IoT%20and%20OT%20Hacking) | IoT/OT architecture, attack surfaces, and hacking methodology |
-| [Module 19 - Cloud Computing](./Syllabus/Module%2019%20-%20Cloud%20Computing) | Cloud service models, container security, and cloud-specific threats |
-| [Module 20 - Cryptography](./Syllabus/Module%2020%20-%20Cryptography) | Encryption algorithms, PKI, digital signatures, and cryptanalysis |
+| [Module 17 - Hacking Mobile Platforms](./Syllabus/Module-17-Hacking-Mobile-Platforms) | Android/iOS attack vectors and mobile device security |
+| [Module 18 - IoT and OT Hacking](./Syllabus/Module-18-IoT-and-OT-Hacking) | IoT/OT architecture, attack surfaces, and hacking methodology |
+| [Module 19 - Cloud Computing](./Syllabus/Module-19-Cloud-Computing) | Cloud service models, container security, and cloud-specific threats |
+| [Module 20 - Cryptography](./Syllabus/Module-20-Cryptography) | Encryption algorithms, PKI, digital signatures, and cryptanalysis |
 
 ## 🧭 How to Navigate
 
